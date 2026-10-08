@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#120d18">
+<title>my safe space ♡ valorie</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Fredoka:wght@300;400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script>
+tailwind.config={theme:{extend:{
+colors:{goth:{base:'#120d18',dark:'#1c1328',card:'#281938',border:'#4a2b63'},
+pinkgoth:{deep:'#831843',accent:'#f472b6',bright:'#ff69b4',glow:'#ff80bf',light:'#fbcfe8',pastel:'#fce7f3'}},
+fontFamily:{cinzel:['Cinzel','serif'],cute:['Fredoka','sans-serif'],sans:['Quicksand','sans-serif']},
+animation:{float:'float 4s ease-in-out infinite',glowPulse:'glowPulse 2s ease-in-out infinite',twinkle:'twinkle 2s ease-in-out infinite',bubble:'bubbleUp 1.8s ease-in infinite',steam:'steam 3s linear infinite'},
+keyframes:{
+float:{'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-10px)'}},
+glowPulse:{'0%,100%':{filter:'drop-shadow(0 0 8px rgba(255,105,180,.6))'},'50%':{filter:'drop-shadow(0 0 18px rgba(255,128,191,.95))'}},
+twinkle:{'0%,100%':{opacity:.3,transform:'scale(.8)'},'50%':{opacity:1,transform:'scale(1.2)'}},
+bubbleUp:{'0%':{transform:'translateY(0) scale(.5)',opacity:.9},'100%':{transform:'translateY(-60px) scale(1.2)',opacity:0}},
+steam:{'0%':{transform:'translateY(0) scale(1)',opacity:.6},'50%':{transform:'translateY(-15px) scale(1.15)',opacity:.3},'100%':{transform:'translateY(-30px) scale(1.3)',opacity:0}}
+}}}};
+</script>
+<style>
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#120d18}::-webkit-scrollbar-thumb{background:#4a2b63;border-radius:999px;border:2px solid #1c1328}::-webkit-scrollbar-thumb:hover{background:#ff69b4}
+*{box-sizing:border-box}
+body{background:#120d18}
+.goth-glass{background:rgba(28,19,40,.75);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(244,114,182,.25);box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 15px rgba(244,114,182,.15)}
+.goth-btn{transition:.25s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}.goth-btn:hover{transform:translateY(-2px);box-shadow:0 0 15px rgba(255,105,180,.5)}.goth-btn:active{transform:translateY(1px)}
+.tab-active{background:linear-gradient(135deg,#831843 0%,#4a2b63 100%);border-color:#ff69b4!important;color:#fbcfe8!important;box-shadow:0 0 12px rgba(255,105,180,.4)}
+.tab-content{display:none}.tab-content.active{display:block}
+#window-canvas{touch-action:none;cursor:crosshair}
+.magic-sparkle{position:fixed;pointer-events:none;width:7px;height:7px;border-radius:50%;background:#ff80bf;box-shadow:0 0 8px #ff69b4,0 0 12px #fff;animation:fadeOut .8s ease-out forwards;z-index:9999}
+@keyframes fadeOut{to{opacity:0;transform:scale(.2) rotate(180deg)}}
+.ember-particle{position:absolute;pointer-events:none;border-radius:50%;background:#ff69b4;box-shadow:0 0 10px #ff80bf;animation:riseAndFade 1.2s ease-out forwards}
+@keyframes riseAndFade{to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}}
+.tarot-card{perspective:1000px;cursor:pointer}.tarot-card-inner{transition:transform .8s cubic-bezier(.175,.885,.32,1.275);transform-style:preserve-3d;position:relative}.tarot-card.flipped .tarot-card-inner{transform:rotateY(180deg)}.tarot-front,.tarot-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;position:absolute;inset:0}.tarot-back{transform:rotateY(180deg)}
+.doll-stage{position:relative;width:180px;height:260px;margin:auto}.doll-hair{position:absolute;width:115px;height:135px;left:32px;top:22px;background:#17101c;border-radius:55% 55% 45% 45%;z-index:1;box-shadow:0 0 0 4px rgba(244,114,182,.15)}.doll-head{position:absolute;width:78px;height:92px;left:50px;top:43px;background:#f2c6b4;border-radius:48% 48% 45% 45%;z-index:3;border:2px solid rgba(255,105,180,.35)}.doll-eye{position:absolute;width:8px;height:11px;background:#30152d;border-radius:50%;top:37px}.doll-eye.left{left:20px}.doll-eye.right{right:20px}.doll-mouth{position:absolute;left:32px;top:61px;width:15px;height:8px;border-bottom:2px solid #831843;border-radius:50%}.doll-body{position:absolute;left:38px;top:125px;width:105px;height:110px;background:#831843;clip-path:polygon(25% 0,75% 0,100% 100%,0 100%);z-index:2;border:2px solid #f472b6}.doll-body.alt{background:#4a2b63}.doll-hat{position:absolute;left:39px;top:0;width:100px;height:70px;z-index:5;display:none}.doll-hat .cone{position:absolute;left:24px;top:0;width:52px;height:55px;background:#21102d;clip-path:polygon(50% 0,100% 100%,0 100%);border:2px solid #f472b6}.doll-hat .rim{position:absolute;left:10px;top:48px;width:80px;height:14px;border-radius:50%;background:#21102d;border:2px solid #f472b6}.doll-hat.show{display:block}
+.familiar{font-size:40px;filter:drop-shadow(0 0 8px rgba(255,105,180,.5))}
+.candle-off .candle-flame{display:none}.candle-off .candle{opacity:.75}
+.rain-drop{position:absolute;width:1px;background:rgba(255,255,255,.35);height:18px;animation:rainfall linear infinite}
+@keyframes rainfall{to{transform:translateY(280px);opacity:0}}
+.range-pink{accent-color:#ff69b4}
+.chat-shell{min-height:520px}
+.profile-card{background:radial-gradient(circle at 50% 0%,rgba(131,24,67,.28),transparent 55%),rgba(28,19,40,.7)}
+.profile-avatar{width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#831843,#4a2b63);border:2px solid #f472b6;box-shadow:0 0 25px rgba(255,105,180,.3);font-size:48px}
+.profile-stat{background:rgba(18,13,24,.55);border:1px solid rgba(74,43,99,.6);border-radius:1rem;padding:.65rem;text-align:center}
+.hair-style{position:absolute;z-index:4;pointer-events:none}
+.hair-bangs{left:34px;top:25px;width:112px;height:65px;border-radius:55% 55% 25% 25%;clip-path:polygon(0 0,100% 0,86% 72%,70% 55%,55% 100%,42% 58%,25% 78%,10% 52%)}
+.hair-bob{left:27px;top:27px;width:126px;height:140px;border-radius:50% 50% 42% 42%}
+.hair-ponytail{left:100px;top:45px;width:62px;height:100px;border-radius:55%;transform:rotate(-18deg)}
+.hair-twin{left:12px;top:48px;width:42px;height:100px;border-radius:50%;box-shadow:124px 0 0 0 currentColor}
+.chat-friends{max-height:520px;overflow:auto}.chat-friend{transition:.2s;border:1px solid rgba(74,43,99,.65);background:rgba(28,19,40,.7)}.chat-friend:hover,.chat-friend.active{border-color:#ff69b4;background:rgba(131,24,67,.22);box-shadow:0 0 12px rgba(255,105,180,.14)}.chat-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#831843,#4a2b63);border:1px solid rgba(244,114,182,.5)}.chat-messages{height:350px;overflow-y:auto;scroll-behavior:smooth}.chat-bubble{max-width:78%;padding:.65rem .85rem;border-radius:1.1rem;font-size:.78rem;line-height:1.45}.chat-bubble.them{background:rgba(28,19,40,.9);border:1px solid rgba(74,43,99,.8);border-bottom-left-radius:.35rem}.chat-bubble.me{background:linear-gradient(135deg,rgba(131,24,67,.9),rgba(74,43,99,.9));border:1px solid rgba(255,105,180,.35);border-bottom-right-radius:.35rem}.chat-time{font-size:9px;color:rgba(251,207,232,.38);margin-top:3px}.online-dot{width:8px;height:8px;border-radius:50%;background:#ff69b4;box-shadow:0 0 8px #ff69b4}.accessory-item{position:absolute;z-index:8;pointer-events:none}.acc-glasses{left:55px;top:73px;font-size:22px}.acc-earrings{left:39px;top:94px;font-size:13px;letter-spacing:42px}.acc-necklace{left:66px;top:112px;font-size:20px}.acc-wings{left:8px;top:130px;font-size:38px;letter-spacing:55px;z-index:1}.acc-tail{left:125px;top:190px;font-size:34px;z-index:1}.acc-bow{left:75px;top:122px;font-size:28px;z-index:6}.acc-crown{left:50px;top:18px;font-size:34px;z-index:7}.acc-flower{left:44px;top:20px;font-size:30px;z-index:7}.acc-horns{left:53px;top:17px;font-size:31px;z-index:7}
+
+textarea,input,select{outline:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;transition:.3s;z-index:10000}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:640px){header{position:sticky}.nav-scroll{scrollbar-width:none}.nav-scroll::-webkit-scrollbar{display:none}.doll-stage{transform:scale(.9)}}
+</style>
+</head>
+
+<body class="text-pinkgoth-pastel font-sans min-h-screen flex flex-col overflow-x-hidden select-none relative">
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-60">
+ <div class="absolute top-10 left-10 text-pinkgoth-accent opacity-30 animate-twinkle"><i class="fa-solid fa-moon text-4xl"></i></div>
+ <div class="absolute top-1/4 right-20 text-pinkgoth-bright opacity-20 animate-twinkle" style="animation-delay:.7s"><i class="fa-solid fa-wand-magic-sparkles text-3xl"></i></div>
+ <div class="absolute bottom-20 left-1/3 text-pinkgoth-light opacity-20 animate-twinkle" style="animation-delay:1.4s"><i class="fa-solid fa-star text-2xl"></i></div>
+ <div class="absolute top-1/3 left-1/4 text-pinkgoth-glow opacity-15 animate-twinkle" style="animation-delay:1.1s"><i class="fa-solid fa-sparkles text-xl"></i></div>
+ <div class="absolute -top-32 -left-32 w-96 h-96 bg-pinkgoth-deep rounded-full blur-[120px] opacity-30"></div>
+ <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-900 rounded-full blur-[140px] opacity-40"></div>
+</div>
+
+<header class="relative z-20 pt-4 pb-2 px-4 border-b border-pinkgoth-accent/20 goth-glass sticky top-0">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-3">
+ <div class="flex items-center gap-3 shrink-0">
+  <div class="relative"><div class="w-10 h-10 rounded-full bg-pinkgoth-deep border-2 border-pinkgoth-accent flex items-center justify-center text-pinkgoth-bright shadow-[0_0_12px_rgba(255,105,180,.5)]"><i class="fa-solid fa-hat-wizard text-xl"></i></div><span class="absolute -bottom-1 -right-1 w-3 h-3 bg-pinkgoth-bright rounded-full animate-ping"></span></div>
+  <div><h1 class="font-cinzel text-xl sm:text-2xl font-bold tracking-wider text-pinkgoth-light drop-shadow-[0_0_10px_rgba(255,105,180,.6)]">my safe space <span class="text-pinkgoth-bright">♡</span> valorie</h1><p class="text-xs text-pink-300/70 font-cute">Your enchanted witchy sanctuary 🔮✨</p></div>
+ </div>
+ <nav class="nav-scroll flex items-center gap-1 bg-goth-dark/80 p-1.5 rounded-full border border-pinkgoth-border/50 overflow-x-auto max-w-full">
+  <button onclick="switchTab('sanctuary')" id="tab-sanctuary" class="tab-btn tab-active px-3 py-1.5 rounded-full text-xs font-cute flex items-center gap-2 border border-transparent whitespace-nowrap"><i class="fa-solid fa-house-chimney-window"></i>Room</button>
+  <button onclick="switchTab('avatar')" id="tab-avatar" class="tab-btn px-3 py-1.5 rounded-full text-xs font-cute text-pinkgoth-light/70 border border-transparent whitespace-nowrap"><i class="fa-solid fa-user-ninja"></i>Doll Maker</button>
+  <button onclick="switchTab('cauldron')" id="tab-cauldron" class="tab-btn px-3 py-1.5 rounded-full text-xs font-cute text-pinkgoth-light/70 border border-transparent whitespace-nowrap"><i class="fa-solid fa-flask"></i>Brew Potion</button>
+  <button onclick="switchTab('tarot')" id="tab-tarot" class="tab-btn px-3 py-1.5 rounded-full text-xs font-cute text-pinkgoth-light/70 border border-transparent whitespace-nowrap"><i class="fa-solid fa-eye"></i>Oracle</button>
+  <button onclick="switchTab('journal')" id="tab-journal" class="tab-btn px-3 py-1.5 rounded-full text-xs font-cute text-pinkgoth-light/70 border border-transparent whitespace-nowrap"><i class="fa-solid fa-book-bookmark"></i>Spellbook</button>
+  <button onclick="switchTab('chat')" id="tab-chat" class="tab-btn px-3 py-1.5 rounded-full text-xs font-cute text-pinkgoth-light/70 border border-transparent whitespace-nowrap"><i class="fa-solid fa-comments"></i>Friends Chat</button>
+  <button onclick="switchTab('profile')" id="tab-profile" class="tab-btn px-3 py-1.5 rounded-full text-xs font-cute text-pinkgoth-light/70 border border-transparent whitespace-nowrap"><i class="fa-solid fa-id-card"></i>My Profile</button>
+ </nav>
+ <button onclick="toggleGlobalAudio()" id="global-audio-btn" class="goth-btn flex items-center gap-2 bg-goth-card/80 border border-pinkgoth-border/60 px-3 py-1.5 rounded-full text-pinkgoth-bright shrink-0"><i class="fa-solid fa-volume-xmark" id="global-audio-icon"></i><span class="text-xs font-cute hidden sm:inline">Cozy Sounds</span></button>
+</div>
+</header>
+
+<main class="relative z-10 flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6">
+<!-- ROOM -->
+<section id="sec-sanctuary" class="tab-content active space-y-6">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+ <div class="goth-glass rounded-3xl p-5 flex flex-col justify-between space-y-4 border border-pinkgoth-accent/30">
+  <div class="flex items-center justify-between"><h2 class="font-cinzel text-lg text-pinkgoth-light font-semibold"><i class="fa-solid fa-cloud-showers-heavy text-pinkgoth-accent"></i> Misty Window</h2><span class="text-[10px] text-pink-300/60 bg-goth-base/60 px-2 py-1 rounded-md">Drag to wipe ✨</span></div>
+  <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-pinkgoth-border/80 shadow-inner">
+   <div class="absolute inset-0 bg-cover bg-center" style="background-image:linear-gradient(to bottom,rgba(18,13,24,.55),rgba(74,43,99,.8)),url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop')"></div>
+   <div class="absolute top-4 right-6 w-12 h-12 rounded-full bg-pinkgoth-light/80 shadow-[0_0_20px_#ff69b4] flex items-center justify-center"><i class="fa-solid fa-moon text-goth-base text-2xl"></i></div>
+   <div id="rain-layer" class="absolute inset-0 pointer-events-none"></div>
+   <canvas id="window-canvas" class="absolute inset-0 w-full h-full z-10"></canvas>
+   <div class="absolute bottom-2 left-2 z-20 text-[10px] text-pink-200/60 bg-goth-base/80 px-2 py-0.5 rounded">Wipe the fog away</div>
+  </div>
+  <div class="bg-goth-dark/60 rounded-2xl p-3 border border-pinkgoth-border/40">
+   <div class="flex items-center justify-between text-xs font-cute"><span><i class="fa-solid fa-fire-flame-curved text-amber-400"></i> Sanctuary Candles</span><button onclick="toggleCandles()" id="candle-toggle-btn" class="text-pinkgoth-bright">Extinguish</button></div>
+   <div id="candle-display" class="flex justify-around items-end pt-3">
+    <div class="candle flex flex-col items-center"><div class="candle-flame w-2 h-4 bg-amber-300 rounded-full animate-glowPulse"></div><div class="w-3 h-8 bg-pinkgoth-deep border border-pinkgoth-accent"></div></div>
+    <div class="candle flex flex-col items-center"><div class="candle-flame w-2.5 h-5 bg-amber-300 rounded-full animate-glowPulse"></div><div class="w-4 h-12 bg-purple-950 border border-pinkgoth-accent"></div></div>
+    <div class="candle flex flex-col items-center"><div class="candle-flame w-2 h-4 bg-amber-300 rounded-full animate-glowPulse"></div><div class="w-3 h-9 bg-pinkgoth-deep border border-pinkgoth-accent"></div></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="goth-glass rounded-3xl p-6 flex flex-col items-center justify-between text-center border border-pinkgoth-accent/40 shadow-2xl">
+  <div><span class="text-xs font-cute uppercase tracking-widest text-pinkgoth-accent">Welcome Home, Magickal Soul</span><h2 class="font-cinzel text-2xl font-bold text-pinkgoth-light">Your Pink Goth Haven</h2></div>
+  <div class="relative my-4 cursor-pointer" onclick="switchTab('avatar')">
+   <div class="w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-gradient-to-b from-purple-950/80 to-pinkgoth-deep/40 border-2 border-pinkgoth-accent flex items-center justify-center shadow-[0_0_25px_rgba(255,105,180,.3)] overflow-hidden"><div id="room-avatar-preview" class="w-full h-full flex items-center justify-center"></div></div>
+   <div id="room-familiar-preview" class="absolute bottom-0 right-0 w-14 h-14 bg-goth-dark border border-pinkgoth-accent rounded-full flex items-center justify-center animate-float"></div>
+  </div>
+  <div class="w-full bg-goth-dark/80 border border-pinkgoth-border/80 rounded-2xl p-4 text-left">
+   <div class="flex items-center justify-between text-pinkgoth-accent text-xs font-cute mb-2"><span><i class="fa-solid fa-sparkles"></i> Daily Affirmation Spell</span><button onclick="refreshAffirmation()"><i class="fa-solid fa-rotate-right"></i></button></div>
+   <p id="affirmation-text" class="text-sm font-cute italic leading-relaxed">"You are deserving of peace, gentle magic, and a soft place to land today."</p>
+  </div>
+ </div>
+
+ <div class="goth-glass rounded-3xl p-5 space-y-4 border border-pinkgoth-accent/30">
+  <div class="flex items-center justify-between"><h2 class="font-cinzel text-lg text-pinkgoth-light"><i class="fa-solid fa-sliders text-pinkgoth-accent"></i> Ambient Mixer</h2><button onclick="toggleGlobalAudio()" class="text-xs text-pinkgoth-bright">Master</button></div>
+  <div class="space-y-4">
+   <div><div class="flex justify-between text-xs mb-1"><span>🌧 Rain</span><button onclick="toggleSound('rain')" id="rain-sound-btn">OFF</button></div><input id="rain-volume" class="range-pink w-full" type="range" min="0" max="100" value="35"></div>
+   <div><div class="flex justify-between text-xs mb-1"><span>🕯 Ambience</span><button onclick="toggleSound('ambient')" id="ambient-sound-btn">OFF</button></div><input id="ambient-volume" class="range-pink w-full" type="range" min="0" max="100" value="25"></div>
+  </div>
+  <div class="rounded-2xl bg-goth-dark/70 border border-pinkgoth-border/40 p-4 text-center">
+   <div class="familiar mb-2" id="room-cat">🐈‍⬛</div><p id="cat-message" class="text-xs text-pink-200/80 font-cute">Your familiar is keeping watch.</p>
+   <button onclick="petCat()" class="goth-btn mt-3 px-4 py-2 rounded-full bg-pinkgoth-deep/80 border border-pinkgoth-accent text-xs">Pet familiar ♡</button>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- DOLL -->
+<section id="sec-avatar" class="tab-content space-y-6">
+<div class="grid lg:grid-cols-2 gap-6">
+ <div class="goth-glass rounded-3xl p-6 text-center border border-pinkgoth-accent/30">
+  <h2 class="font-cinzel text-2xl text-pinkgoth-light">Doll Maker</h2><p class="text-xs text-pink-300/60 mb-4">Create the little witch who lives here.</p>
+  <div class="rounded-3xl bg-gradient-to-b from-purple-950/50 to-goth-base p-4 min-h-[330px] flex items-center justify-center">
+   <div class="doll-stage" id="doll-stage">
+    <div class="doll-hair" id="doll-hair"></div><div id="doll-hairstyle"></div><div class="doll-hat" id="doll-hat"><div class="cone"></div><div class="rim"></div></div>
+    <div class="doll-head" id="doll-head"><span class="doll-eye left"></span><span class="doll-eye right"></span><span class="doll-mouth"></span></div>
+    <div class="doll-body" id="doll-body"></div>
+     <div id="doll-accessories"></div>
+   </div>
+  </div>
+  <div class="mt-4 flex justify-center gap-2"><button onclick="randomizeDoll()" class="goth-btn px-4 py-2 rounded-full bg-pinkgoth-deep border border-pinkgoth-accent text-xs">✨ Randomize</button><button onclick="saveDoll()" class="goth-btn px-4 py-2 rounded-full bg-goth-card border border-pinkgoth-border text-xs">♡ Save look</button></div>
+ </div>
+ <div class="goth-glass rounded-3xl p-6 border border-pinkgoth-accent/30 space-y-5">
+  <h3 class="font-cinzel text-xl text-pinkgoth-light">Customize</h3>
+  <div><label class="text-xs text-pinkgoth-accent">Hair color</label><div class="grid grid-cols-4 gap-2 mt-2" id="hair-options"></div></div>
+  <div><label class="text-xs text-pinkgoth-accent">Dress</label><div class="grid grid-cols-4 gap-2 mt-2" id="dress-options"></div></div>
+   <div><label class="text-xs text-pinkgoth-accent">Hairstyle</label><div class="grid grid-cols-3 gap-2 mt-2" id="hairstyle-options"></div></div>
+  <div><label class="text-xs text-pinkgoth-accent">Skin</label><div class="grid grid-cols-4 gap-2 mt-2" id="skin-options"></div></div>
+  <div><label class="text-xs text-pinkgoth-accent">Accessory</label><div class="grid grid-cols-3 gap-2 mt-2" id="hat-options"></div></div>
+  <div class="rounded-2xl bg-goth-dark/60 p-4 text-xs text-pink-200/70">Your look is saved locally on this device, so your little witch can wait for you here.</div>
+ </div>
+</div>
+</section>
+
+<!-- POTION -->
+<section id="sec-cauldron" class="tab-content space-y-6">
+<div class="grid lg:grid-cols-2 gap-6">
+ <div class="goth-glass rounded-3xl p-6 border border-pinkgoth-accent/30">
+  <h2 class="font-cinzel text-2xl text-pinkgoth-light">Brew Potion</h2><p class="text-xs text-pink-300/60 mb-5">Choose three ingredients and let the cauldron decide their magic.</p>
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="ingredient-grid"></div>
+  <div class="mt-5 rounded-3xl bg-goth-base border border-pinkgoth-border p-6 text-center relative overflow-hidden">
+   <div id="potion-bubbles" class="absolute inset-0 pointer-events-none"></div>
+   <div class="text-7xl animate-float">🧪</div>
+   <div id="brew-status" class="mt-2 text-xs text-pink-200/60">The cauldron is waiting...</div>
+   <button onclick="brewPotion()" class="goth-btn mt-4 px-7 py-2.5 rounded-full bg-pinkgoth-deep border border-pinkgoth-accent font-cute text-sm">Stir & Brew ✨</button>
+  </div>
+ </div>
+ <div class="goth-glass rounded-3xl p-6 border border-pinkgoth-accent/30">
+  <h3 class="font-cinzel text-xl text-pinkgoth-light">Potion Cabinet</h3>
+  <div id="potion-result" class="mt-5 min-h-[260px] rounded-3xl bg-goth-dark/70 border border-pinkgoth-border/50 p-6 flex flex-col items-center justify-center text-center">
+   <span class="text-5xl opacity-50">🔮</span><p class="text-sm mt-3">Your brewed magic will appear here.</p>
+  </div>
+ </div>
+</div>
+</section>
+
+<!-- ORACLE -->
+<section id="sec-tarot" class="tab-content space-y-6">
+<div class="goth-glass rounded-3xl p-6 border border-pinkgoth-accent/30 text-center">
+ <h2 class="font-cinzel text-2xl text-pinkgoth-light">Oracle Room</h2><p class="text-xs text-pink-300/60 mb-6">Take a breath. Ask quietly. Turn the card when you're ready.</p>
+ <div id="tarot-card" class="tarot-card mx-auto w-52 h-80" onclick="flipTarot()">
+  <div class="tarot-card-inner w-full h-full">
+   <div class="tarot-front rounded-2xl border-2 border-pinkgoth-accent bg-gradient-to-br from-goth-dark to-pinkgoth-deep flex flex-col items-center justify-center gap-5 shadow-[0_0_30px_rgba(255,105,180,.25)]">
+    <i class="fa-solid fa-eye text-5xl text-pinkgoth-bright"></i><span class="font-cinzel text-lg">ORACLE</span><span class="text-[10px] tracking-widest text-pink-200/60">CLICK TO REVEAL</span>
+   </div>
+   <div class="tarot-back rounded-2xl border-2 border-pinkgoth-accent bg-goth-dark p-5 flex flex-col items-center justify-center">
+    <div id="tarot-symbol" class="text-5xl mb-4">☾</div><h3 id="tarot-name" class="font-cinzel text-xl text-pinkgoth-light">The Moon</h3><p id="tarot-meaning" class="text-xs text-pink-200/70 mt-3 leading-relaxed"></p>
+   </div>
+  </div>
+ </div>
+ <div class="mt-6 flex justify-center gap-2"><button onclick="drawTarot(event)" class="goth-btn px-5 py-2 rounded-full bg-pinkgoth-deep border border-pinkgoth-accent text-xs">Draw another card</button><button onclick="flipTarot()" class="goth-btn px-5 py-2 rounded-full bg-goth-card border border-pinkgoth-border text-xs">Turn card</button></div>
+</div>
+</section>
+
+<!-- SPELLBOOK -->
+<section id="sec-journal" class="tab-content space-y-6">
+<div class="grid lg:grid-cols-[1fr_300px] gap-6">
+ <div class="goth-glass rounded-3xl p-5 sm:p-6 border border-pinkgoth-accent/30">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div><h2 class="font-cinzel text-2xl text-pinkgoth-light">Spellbook</h2><p class="text-xs text-pink-300/60">A private little place for thoughts, spells, and wishes.</p></div><button onclick="newSpell()" class="goth-btn px-4 py-2 rounded-full bg-pinkgoth-deep border border-pinkgoth-accent text-xs">+ New page</button></div>
+  <input id="spell-title" class="w-full bg-goth-dark/80 border border-pinkgoth-border rounded-xl px-4 py-3 text-sm text-pinkgoth-light mb-3" placeholder="Page title...">
+  <textarea id="spell-text" class="w-full h-80 bg-goth-dark/80 border border-pinkgoth-border rounded-2xl p-4 text-sm text-pinkgoth-pastel resize-none" placeholder="Write whatever needs a safe place..."></textarea>
+  <div class="flex flex-wrap gap-2 mt-3"><button onclick="saveSpell()" class="goth-btn px-5 py-2 rounded-full bg-pinkgoth-deep border border-pinkgoth-accent text-xs">Save spell</button><button onclick="deleteSpell()" class="goth-btn px-5 py-2 rounded-full bg-goth-card border border-pinkgoth-border text-xs">Clear page</button><span id="save-state" class="text-xs text-pink-300/50 self-center"></span></div>
+ </div>
+ <aside class="goth-glass rounded-3xl p-5 border border-pinkgoth-accent/30">
+  <h3 class="font-cinzel text-lg text-pinkgoth-light">Saved Pages</h3><div id="spell-list" class="mt-4 space-y-2 max-h-[430px] overflow-auto"></div>
+ </aside>
+</div>
+</section>
+
+<!-- MY PROFILE -->
+<section id="sec-profile" class="tab-content space-y-6">
+ <div class="grid lg:grid-cols-[360px_1fr] gap-6">
+  <div class="goth-glass rounded-3xl p-6 text-center border border-pinkgoth-accent/30 profile-card">
+   <div class="flex justify-center mb-4"><div id="profile-avatar" class="profile-avatar">🌙</div></div>
+   <input id="profile-name" class="w-full text-center bg-goth-dark/70 border border-pinkgoth-border rounded-2xl px-4 py-3 text-lg font-cinzel text-pinkgoth-light" placeholder="Your name..." maxlength="24">
+   <textarea id="profile-bio" class="w-full mt-3 bg-goth-dark/70 border border-pinkgoth-border rounded-2xl px-4 py-3 text-xs text-pinkgoth-pastel resize-none h-24" placeholder="Write a little about yourself..."></textarea>
+   <div class="grid grid-cols-3 gap-2 mt-4">
+    <div class="profile-stat"><div id="profile-friends-count" class="text-pinkgoth-bright font-cinzel text-lg">0</div><div class="text-[9px] text-pink-200/40">Friends</div></div>
+    <div class="profile-stat"><div id="profile-spells-count" class="text-pinkgoth-bright font-cinzel text-lg">0</div><div class="text-[9px] text-pink-200/40">Pages</div></div>
+    <div class="profile-stat"><div class="text-pinkgoth-bright font-cinzel text-lg">♡</div><div class="text-[9px] text-pink-200/40">Magic</div></div>
+   </div>
+   <button onclick="saveProfile()" class="goth-btn mt-4 px-6 py-2 rounded-full bg-pinkgoth-deep border border-pinkgoth-accent text-xs">Save profile ♡</button>
+  </div>
+  <div class="goth-glass rounded-3xl p-6 border border-pinkgoth-accent/30">
+   <h2 class="font-cinzel text-2xl text-pinkgoth-light">About Me</h2>
+   <p class="text-xs text-pink-300/60 mb-5">A little card for the witch behind the sanctuary.</p>
+   <label class="text-xs text-pinkgoth-accent">Profile icon</label>
+   <div id="profile-icon-options" class="grid grid-cols-6 gap-2 mt-2"></div>
+   <label class="block text-xs text-pinkgoth-accent mt-5">Favorite mood</label>
+   <div id="profile-mood-options" class="grid grid-cols-3 gap-2 mt-2"></div>
+   <div class="rounded-2xl bg-goth-dark/60 p-4 mt-5 border border-pinkgoth-border/40 text-xs text-pink-200/60">Your profile is synced to your private Firebase account.</div>
+  </div>
+ </div>
+</section>
+
+<!-- FRIENDS CHAT -->
+<section id="sec-chat" class="tab-content space-y-6">
+<div class="goth-glass rounded-3xl p-5 sm:p-6 border border-pinkgoth-accent/30">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+  <div><h2 class="font-cinzel text-2xl text-pinkgoth-light">Friends Chat</h2><p class="text-xs text-pink-300/60">Real-time whispers between you and your coven.</p></div>
+  <span id="chat-connection-badge" class="text-xs text-pinkgoth-accent bg-goth-dark/70 border border-pinkgoth-border rounded-full px-3 py-1">♡ connecting...</span>
+</div>
+
+<div id="auth-card" class="bg-goth-dark/60 border border-pinkgoth-border/60 rounded-3xl p-5 mb-4">
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <h3 class="font-cinzel text-lg text-pinkgoth-light">Enter your sanctuary</h3>
+      <p class="text-[10px] text-pink-200/45 mt-1">Create an account or log in. Your friends can then find you by email.</p>
+    </div>
+    <div class="space-y-2">
+      <input id="auth-email" type="email" autocomplete="email" class="w-full bg-goth-base/80 border border-pinkgoth-border rounded-2xl px-4 py-3 text-xs text-pinkgoth-light placeholder:text-pink-200/30" placeholder="your@email.com">
+      <input id="auth-password" type="password" autocomplete="current-password" class="w-full bg-goth-base/80 border border-pinkgoth-border rounded-2xl px-4 py-3 text-xs text-pinkgoth-light placeholder:text-pink-200/30" placeholder="Password (6+ characters)">
+      <div class="flex flex-wrap gap-2">
+        <button onclick="window.valorieSignUp()" class="goth-btn px-4 py-2 rounded-2xl bg-pinkgoth-deep border border-pinkgoth-accent text-xs">Create account ♡</button>
+        <button onclick="window.valorieLogin()" class="goth-btn px-4 py-2 rounded-2xl bg-goth-dark border border-pinkgoth-border text-xs">Log in</button>
+      </div>
+      <div id="auth-status" class="text-[10px] text-pink-200/45"></div>
+    </div>
+  </div>
+</div>
+
+<div id="chat-app" class="hidden">
+<div class="grid lg:grid-cols-[300px_1fr] gap-4 chat-shell">
+<aside class="bg-goth-dark/60 border border-pinkgoth-border/60 rounded-3xl p-3">
+  <div class="flex items-center justify-between px-2 mb-3">
+    <span class="font-cinzel text-sm text-pinkgoth-light">Your Coven</span>
+    <span id="friend-count" class="text-[9px] text-pink-300/50"></span>
+  </div>
+  <div class="space-y-2 mb-3">
+    <input id="friend-email-input" type="email" class="w-full bg-goth-base/80 border border-pinkgoth-border rounded-2xl px-3 py-2.5 text-[10px] text-pinkgoth-light placeholder:text-pink-200/30" placeholder="Friend's email">
+    <button onclick="window.addFriendByEmail()" class="goth-btn w-full px-3 py-2 rounded-2xl bg-pinkgoth-deep border border-pinkgoth-accent text-[10px]">♡ Add friend</button>
+  </div>
+  <div id="friend-request-box" class="hidden rounded-2xl border border-pinkgoth-border/60 bg-goth-base/50 p-3 mb-3">
+    <div class="text-[10px] text-pinkgoth-accent mb-2">Friend requests</div>
+    <div id="friend-requests" class="space-y-2"></div>
+  </div>
+  <div id="friend-list" class="chat-friends space-y-2"></div>
+  <button onclick="window.valorieLogout()" class="mt-3 w-full rounded-2xl border border-pinkgoth-border bg-goth-base/50 px-3 py-2 text-[10px] text-pink-200/55">Log out</button>
+</aside>
+
+<div class="bg-goth-dark/55 border border-pinkgoth-border/60 rounded-3xl overflow-hidden flex flex-col">
+  <div class="p-4 border-b border-pinkgoth-border/50 flex items-center gap-3">
+    <div id="chat-header-avatar" class="chat-avatar text-xl">♡</div>
+    <div class="min-w-0"><div id="chat-header-name" class="font-cinzel text-sm text-pinkgoth-light truncate">Choose a friend</div><div id="chat-header-status" class="text-[9px] text-pink-200/50">Your private conversation</div></div>
+  </div>
+  <div id="chat-messages" class="chat-messages p-4 space-y-3 flex-1"></div>
+  <div class="p-3 border-t border-pinkgoth-border/50">
+    <div class="flex gap-2"><input id="chat-input" class="flex-1 min-w-0 bg-goth-base/80 border border-pinkgoth-border rounded-2xl px-4 py-3 text-xs text-pinkgoth-light placeholder:text-pink-200/30" placeholder="Whisper something..." maxlength="240"><button onclick="window.sendChatMessage()" class="goth-btn shrink-0 px-4 py-2 rounded-2xl bg-pinkgoth-deep border border-pinkgoth-accent text-xs"><i class="fa-solid fa-paper-plane"></i></button></div>
+    <div class="flex flex-wrap gap-2 mt-2"><button onclick="window.quickChat('I missed you ♡')" class="text-[9px] rounded-full px-3 py-1 border border-pinkgoth-border bg-goth-base/60">I missed you ♡</button><button onclick="window.quickChat('Come hang out with me ✨')" class="text-[9px] rounded-full px-3 py-1 border border-pinkgoth-border bg-goth-base/60">Come hang out ✨</button><button onclick="window.quickChat('You are doing amazing.')" class="text-[9px] rounded-full px-3 py-1 border border-pinkgoth-border bg-goth-base/60">You got this ♡</button></div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="relative z-10 text-center py-5 text-[10px] text-pink-300/40 font-cute">made softly for <span class="text-pinkgoth-accent">valorie</span> · click anywhere for sparkles ✦</footer>
+<div id="toast" class="toast goth-glass rounded-full px-5 py-2 text-xs text-pinkgoth-light"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const storage='valorie-safe-space';
+let state=JSON.parse(localStorage.getItem(storage)||'{}');
+state.doll=state.doll||{hair:'#17101c',dress:'#831843',skin:'#f2c6b4',hat:false};
+state.spells=state.spells||[];
+state.audio=state.audio||{master:false,rain:false,ambient:false};
+state.chat=state.chat||{};
+state.doll.accessories=state.doll.accessories||{head:'none',face:'none',extra:'none'};state.doll.hairstyle=state.doll.hairstyle||'straight';state.profile=state.profile||{name:'Valorie',bio:'A little witch making a soft place to exist.',icon:'🌙',mood:'soft witch ♡'};
+
+function persist(){localStorage.setItem(storage,JSON.stringify(state))}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window._toast);window._toast=setTimeout(()=>t.classList.remove('show'),1800)}
+function switchTab(tab){
+ document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('tab-active'));
+ $('sec-'+tab).classList.add('active');$('tab-'+tab).classList.add('tab-active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+const affirmations=[
+'You are deserving of peace, gentle magic, and a soft place to land today.',
+'You do not have to earn rest. You are allowed to simply be.',
+'Your softness is not weakness. It is a language of its own.',
+'Little steps still count. Your future self is cheering quietly.',
+'You are allowed to protect your peace without explaining it.',
+'There is still magic waiting for you in ordinary days.'
+];
+function refreshAffirmation(){$('affirmation-text').textContent='"'+affirmations[Math.floor(Math.random()*affirmations.length)]+'"';sparkles(4)}
+function petCat(){const msgs=['purrr... you found the secret soft spot ♡','your familiar approves of this affection.','tiny witchy headbutt received.','the cat has decided you may stay.'];$('cat-message').textContent=msgs[Math.floor(Math.random()*msgs.length)];sparkles(8)}
+
+function toggleCandles(){
+ const d=$('candle-display');d.classList.toggle('candle-off');const off=d.classList.contains('candle-off');
+ $('candle-toggle-btn').textContent=off?'Light':'Extinguish';toast(off?'Candles extinguished 🕯':'The candles are glowing again ✨');
+}
+function makeRain(){
+ const layer=$('rain-layer');for(let i=0;i<32;i++){let r=document.createElement('i');r.className='rain-drop';r.style.left=Math.random()*100+'%';r.style.top=Math.random()*-100+'px';r.style.animationDuration=(.7+Math.random()*1.1)+'s';r.style.animationDelay=(-Math.random()*2)+'s';layer.appendChild(r)}
+}
+function initWindow(){
+ const c=$('window-canvas'),ctx=c.getContext('2d');let drawing=false;
+ function size(){const rect=c.getBoundingClientRect(),d=window.devicePixelRatio||1;c.width=rect.width*d;c.height=rect.height*d;ctx.setTransform(d,0,0,d,0,0);fog()}
+ function fog(){const w=c.clientWidth,h=c.clientHeight;ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(25,16,34,.58)';ctx.fillRect(0,0,w,h);for(let i=0;i<100;i++){ctx.fillStyle='rgba(255,255,255,'+(Math.random()*.07)+')';ctx.beginPath();ctx.arc(Math.random()*w,Math.random()*h,Math.random()*3+1,0,7);ctx.fill()}}
+ function wipe(e){const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.arc(x,y,32,0,7);ctx.fill();ctx.globalCompositeOperation='source-over'}
+ c.addEventListener('pointerdown',e=>{drawing=true;c.setPointerCapture(e.pointerId);wipe(e)});c.addEventListener('pointermove',e=>drawing&&wipe(e));c.addEventListener('pointerup',()=>drawing=false);c.addEventListener('pointercancel',()=>drawing=false);window.addEventListener('resize',size);size()
+}
+makeRain();initWindow();
+
+const hairOpts=[['Midnight','#17101c'],['Berry','#58103d'],['Plum','#32124f'],['Rose','#9f3f68'],['Silver','#9d93a8'],['Cherry','#5b172b'],['Pink','#d85b9b'],['Blueblack','#18243d']];
+const dressOpts=[['Goth','#831843'],['Plum','#4a2b63'],['Night','#171221'],['Rose','#9b315d'],['Velvet','#54142e'],['Lilac','#6d4a85'],['Blackpink','#301526'],['Moon','#696070']];
+const skinOpts=[['Porcelain','#f6d8cc'],['Peach','#f2c6b4'],['Warm','#d99c82'],['Deep','#8f5749']];
+const headAcc=[['None','none','♡'],['Witch hat','hat','🧙‍♀️'],['Crown','crown','♛'],['Flower','flower','🌸'],['Devil horns','horns','😈'],['Halo','halo','😇']];
+const faceAcc=[['None','none','♡'],['Glasses','glasses','👓'],['Earrings','earrings','💎'],['Necklace','necklace','📿'],['Bow','bow','🎀'],['Mask','mask','🖤']];
+const extraAcc=[['None','none','♡'],['Wings','wings','🪽'],['Cat tail','tail','🐈‍⬛'],['Bat wings','batwings','🦇'],['Magic wand','wand','🪄'],['Heart charm','heart','💗']];
+
+const hairstyleOpts=[['Straight','straight','♡'],['Soft bangs','bangs','✦'],['Bob','bob','♢'],['Side pony','ponytail','🎀'],['Twin tails','twin','♡'],['Messy','messy','✧']];
+function hairstyleMarkup(style){
+ const h=state.doll.hair;
+ if(style==='bangs'||style==='messy')return '<span class="hair-style hair-bangs" style="background:'+h+';transform:rotate('+(style==='messy'?-3:0)+'deg)"></span>';
+ if(style==='bob')return '<span class="hair-style hair-bob" style="background:'+h+'"></span>';
+ if(style==='ponytail')return '<span class="hair-style hair-ponytail" style="background:'+h+'"></span>';
+ if(style==='twin')return '<span class="hair-style hair-twin" style="background:'+h+';color:'+h+'"></span>';
+ return '';
+}
+
+function optionButton(label,value,type){const b=document.createElement('button');b.className='goth-btn rounded-xl border border-pinkgoth-border bg-goth-dark/70 p-2 text-[10px]';b.innerHTML='<span class="block h-5 rounded-lg mb-1 border border-white/10"></span>'+label;b.querySelector('span').style.background=value;b.onclick=()=>{state.doll[type]=value;persist();renderDoll()};return b}
+function accessoryButton(label,value,icon,type){const b=document.createElement('button');b.className='goth-btn rounded-xl border border-pinkgoth-border bg-goth-dark/70 p-2 text-[10px]';b.innerHTML='<span class="block text-lg h-6">'+icon+'</span>'+label;b.onclick=()=>{state.doll.accessories[type]=value;persist();renderDoll()};return b}
+function initDollOptions(){
+ const hbox=$('hairstyle-options');hairstyleOpts.forEach(x=>hbox.appendChild(accessoryButton(x[0],x[1],x[2],'hairstyle')));[['hair',hairOpts],['dress',dressOpts],['skin',skinOpts]].forEach(([type,arr])=>{const box=$(type==='hair'?'hair-options':type==='dress'?'dress-options':'skin-options');arr.forEach(x=>box.appendChild(optionButton(x[0],x[1],type)))});[['head',headAcc,'hat-options'],['face',faceAcc,'face-options'],['extra',extraAcc,'extra-options']].forEach(([type,arr,id])=>{const box=$(id);arr.forEach(x=>box.appendChild(accessoryButton(x[0],x[1],x[2],type)))})}
+function accessoryMarkup(a){const m=[];if(a.head==='crown')m.push('<span class="accessory-item acc-crown">♛</span>');if(a.head==='flower')m.push('<span class="accessory-item acc-flower">🌸</span>');if(a.head==='horns')m.push('<span class="accessory-item acc-horns">😈</span>');if(a.head==='halo')m.push('<span class="accessory-item acc-crown">😇</span>');if(a.head==='hat')m.push('<div class="doll-hat show"><div class="cone"></div><div class="rim"></div></div>');if(a.face==='glasses')m.push('<span class="accessory-item acc-glasses">👓</span>');if(a.face==='earrings')m.push('<span class="accessory-item acc-earrings">💎　💎</span>');if(a.face==='necklace')m.push('<span class="accessory-item acc-necklace">📿</span>');if(a.face==='bow')m.push('<span class="accessory-item acc-bow">🎀</span>');if(a.face==='mask')m.push('<span class="accessory-item acc-glasses">🖤</span>');if(a.extra==='wings')m.push('<span class="accessory-item acc-wings">🪽　🪽</span>');if(a.extra==='tail')m.push('<span class="accessory-item acc-tail">🐈‍⬛</span>');if(a.extra==='batwings')m.push('<span class="accessory-item acc-wings">🦇　🦇</span>');if(a.extra==='wand')m.push('<span class="accessory-item acc-tail">🪄</span>');if(a.extra==='heart')m.push('<span class="accessory-item acc-tail">💗</span>');return m.join('')}
+function renderDoll(){$('doll-hair').style.background=state.doll.hair;$('doll-body').style.background=state.doll.dress;$('doll-head').style.background=state.doll.skin;$('doll-hat').classList.toggle('show',state.doll.accessories.head==='hat');$('doll-accessories').innerHTML=accessoryMarkup(state.doll.accessories);$('doll-hairstyle').innerHTML=hairstyleMarkup(state.doll.hairstyle);$('room-avatar-preview').innerHTML='<div class="scale-[.58] origin-center"><div class="doll-stage"><div class="doll-hair" style="background:'+state.doll.hair+'"></div><div class="doll-head" style="background:'+state.doll.skin+'"><span class="doll-eye left"></span><span class="doll-eye right"></span><span class="doll-mouth"></span></div><div class="doll-body" style="background:'+state.doll.dress+'"></div><div class="doll-hat '+(state.doll.accessories.head==='hat'?'show':'')+'"><div class="cone"></div><div class="rim"></div></div>'+accessoryMarkup(state.doll.accessories)+'</div></div>';$("room-familiar-preview").innerHTML='<span class="familiar text-2xl">🐈‍⬛</span>'}
+function randomizeDoll(){const heads=headAcc.filter(x=>x[1]!=='none'),faces=faceAcc.filter(x=>x[1]!=='none'),extras=extraAcc.filter(x=>x[1]!=='none');state.doll={hair:hairOpts[Math.floor(Math.random()*hairOpts.length)][1],hairstyle:hairstyleOpts[Math.floor(Math.random()*hairstyleOpts.length)][1],dress:dressOpts[Math.floor(Math.random()*dressOpts.length)][1],skin:skinOpts[Math.floor(Math.random()*skinOpts.length)][1],accessories:{head:Math.random()>.35?heads[Math.floor(Math.random()*heads.length)][1]:'none',face:Math.random()>.35?faces[Math.floor(Math.random()*faces.length)][1]:'none',extra:Math.random()>.45?extras[Math.floor(Math.random()*extras.length)][1]:'none'}};persist();renderDoll();sparkles(12)}
+function saveDoll(){persist();toast('Your little witch is safe here ♡')}
+initDollOptions();renderDoll();
+
+const ingredients=[
+['Moonwater','💧'],['Rose Petals','🌹'],['Lavender','🪻'],['Star Dust','✨'],['Blackberry','🫐'],['Honey','🍯'],['Mushroom','🍄'],['Cinnamon','🪵'],['Crystal','💎']
+];
+let selected=[];
+ingredients.forEach((x,i)=>{const b=document.createElement('button');b.className='goth-btn rounded-2xl border border-pinkgoth-border bg-goth-dark/70 p-3 text-xs';b.innerHTML='<div class="text-2xl">'+x[1]+'</div><div class="mt-1">'+x[0]+'</div>';b.onclick=()=>{if(selected.includes(i)){selected=selected.filter(v=>v!==i);b.classList.remove('ring-2','ring-pink-400')}else if(selected.length<3){selected.push(i);b.classList.add('ring-2','ring-pink-400')}else toast('Only three ingredients, little witch ♡')};$('ingredient-grid').appendChild(b)});
+const potions=[
+['Potion of Softness','🌸','For days when your heart needs somewhere warm to rest.','A gentle reminder to slow down.'],
+['Potion of Courage','🔥','For taking one tiny brave step when everything feels enormous.','Courage does not have to be loud.'],
+['Potion of Dreams','🌙','For imagination, strange ideas, and midnight inspiration.','Keep dreaming past the edges.'],
+['Potion of Protection','🛡️','For boundaries, rest, and keeping your sanctuary sacred.','Not everything deserves access to you.'],
+['Potion of Mischief','🖤','For a little chaos, laughter, and harmless rebellion.','Be delightfully unpredictable.']
+];
+function brewPotion(){
+ if(selected.length<3){toast('Choose three ingredients first ✨');return}
+ $('brew-status').textContent='The cauldron is stirring...';
+ for(let i=0;i<18;i++){let b=document.createElement('span');b.className='absolute w-3 h-3 rounded-full bg-pink-400/50 animate-bubble';b.style.left=Math.random()*100+'%';b.style.top=(50+Math.random()*40)+'%';$('potion-bubbles').appendChild(b);setTimeout(()=>b.remove(),1800)}
+ setTimeout(()=>{const p=potions[Math.floor(Math.random()*potions.length)];$('potion-result').innerHTML='<div class="text-6xl">'+p[1]+'</div><h3 class="font-cinzel text-xl text-pinkgoth-light mt-3">'+p[0]+'</h3><p class="text-xs text-pink-200/70 mt-2 max-w-sm">'+p[2]+'</p><p class="text-xs text-pinkgoth-accent italic mt-3">'+p[3]+'</p>';$('brew-status').textContent='The potion is ready.';sparkles(16)},850)
+}
+
+const tarot=[
+['The Moon','☾','Trust what you feel, but give uncertainty time to become clear.'],
+['The Star','☆','Hope is still alive. Let yourself want something beautiful.'],
+['The Empress','♕','Nurture yourself without apology. Softness can be abundant.'],
+['The Hermit','☽','A quiet answer may be waiting underneath all the noise.'],
+['The Sun','☀','Something warm is trying to reach you. Let it.'],
+['Strength','♡','Your gentleness and your boundaries can exist together.'],
+['The Magician','✦','You already have more tools than you think. Begin.'],
+['Death','🜏','An ending can be a doorway, not a punishment.']
+];
+let currentTarot=0;
+function setTarot(){const t=tarot[currentTarot];$('tarot-symbol').textContent=t[1];$('tarot-name').textContent=t[0];$('tarot-meaning').textContent=t[2]}
+function flipTarot(){$('tarot-card').classList.toggle('flipped')}
+function drawTarot(e){if(e)e.stopPropagation();currentTarot=Math.floor(Math.random()*tarot.length);setTarot();$('tarot-card').classList.remove('flipped');setTimeout(()=>{$('tarot-card').classList.add('flipped');sparkles(10)},250)}
+setTarot();
+
+
+const profileIcons=['🌙','🖤','🌹','🦇','🐈‍⬛','🪻','🕯️','🧸','🧙‍♀️','✨','🎀','🪽'];
+const profileMoods=['soft witch ♡','gothic night 🖤','pink magic ✨','cozy rain 🌧️','moon child 🌙','chaotic fairy 🦇'];
+function renderProfile(){
+ const p=state.profile;$('profile-name').value=p.name;$('profile-bio').value=p.bio;$('profile-avatar').textContent=p.icon;
+ updateProfileStats();
+}
+async function saveProfile(){
+ state.profile.name=$('profile-name').value.trim()||'Valorie';state.profile.bio=$('profile-bio').value.trim()||'A little witch making a soft place to exist.';persist();renderProfile();toast('Your profile is safe here ♡');
+ if(window.valorieSyncProfile) await window.valorieSyncProfile();
+}
+function initProfile(){
+ const ib=$('profile-icon-options'),mb=$('profile-mood-options');
+ profileIcons.forEach(icon=>{const b=document.createElement('button');b.className='goth-btn rounded-xl border border-pinkgoth-border bg-goth-dark/70 p-2 text-xl';b.textContent=icon;b.onclick=()=>{state.profile.icon=icon;persist();renderProfile()};ib.appendChild(b)});
+ profileMoods.forEach(m=>{const b=document.createElement('button');b.className='goth-btn rounded-xl border border-pinkgoth-border bg-goth-dark/70 p-2 text-[10px]';b.textContent=m;b.onclick=()=>{state.profile.mood=m;persist()};mb.appendChild(b)});
+ renderProfile();
+}
+function updateProfileStats(){
+ if($('profile-friends-count')){$('profile-friends-count').textContent=friends.length;$('profile-spells-count').textContent=state.spells.length}
+}
+
+function renderSpells(){
+ const box=$('spell-list');box.innerHTML='';
+ if(!state.spells.length){box.innerHTML='<p class="text-xs text-pink-200/40 text-center py-8">No saved pages yet.<br>Your book is waiting.</p>';return}
+ state.spells.forEach((s,i)=>{const b=document.createElement('button');b.className='w-full text-left rounded-xl border border-pinkgoth-border/60 bg-goth-dark/70 p-3 hover:border-pinkgoth-accent transition';b.innerHTML='<div class="text-xs text-pinkgoth-light truncate">'+(s.title||'Untitled spell')+'</div><div class="text-[9px] text-pink-200/40 mt-1">'+new Date(s.time).toLocaleDateString()+'</div>';b.onclick=()=>loadSpell(i);box.appendChild(b)})
+}
+function saveSpell(){
+ const title=$('spell-title').value.trim()||'Untitled spell',text=$('spell-text').value;
+ if(!text.trim()){toast('Write something first, little witch ♡');return}
+ state.spells.unshift({title,text,time:Date.now()});persist();renderSpells();updateProfileStats();initProfile();$('save-state').textContent='Saved just now ♡';toast('Spellbook page saved');
+}
+function loadSpell(i){const s=state.spells[i];$('spell-title').value=s.title;$('spell-text').value=s.text;$('save-state').textContent='Loaded from your book'}
+function newSpell(){$('spell-title').value='';$('spell-text').value='';$('save-state').textContent='New page';$('spell-title').focus()}
+function deleteSpell(){$('spell-title').value='';$('spell-text').value='';$('save-state').textContent='Page cleared'}
+renderSpells();
+
+let audioCtx=null,rainGain=null,ambientGain=null,rainNoise=null,ambientOsc=null;
+
+function audioSetup(){
+ if(audioCtx) return true;
+ const AudioCtx=window.AudioContext||window.webkitAudioContext;
+ if(!AudioCtx){toast('Audio is not supported in this browser.');return false}
+ try{
+  audioCtx=new AudioCtx();
+
+  rainGain=audioCtx.createGain();
+  ambientGain=audioCtx.createGain();
+  rainGain.gain.value=0;
+  ambientGain.gain.value=0;
+
+  // Layered filtered noise = a soft continuous rain texture.
+  const buf=audioCtx.createBuffer(1,audioCtx.sampleRate*3,audioCtx.sampleRate);
+  const data=buf.getChannelData(0);
+  for(let i=0;i<data.length;i++){
+    const white=Math.random()*2-1;
+    data[i]=white*0.22;
+  }
+  rainNoise=audioCtx.createBufferSource();
+  rainNoise.buffer=buf;
+  rainNoise.loop=true;
+
+  const low=audioCtx.createBiquadFilter();
+  low.type='lowpass';
+  low.frequency.value=2400;
+  low.Q.value=.35;
+
+  const high=audioCtx.createBiquadFilter();
+  high.type='highpass';
+  high.frequency.value=180;
+  high.Q.value=.2;
+
+  rainNoise.connect(high).connect(low).connect(rainGain).connect(audioCtx.destination);
+  rainNoise.start();
+
+  ambientOsc=audioCtx.createOscillator();
+  const ambientLevel=audioCtx.createGain();
+  ambientOsc.type='sine';
+  ambientOsc.frequency.value=110;
+  ambientLevel.gain.value=0;
+  ambientOsc.connect(ambientLevel).connect(ambientGain).connect(audioCtx.destination);
+  ambientOsc.start();
+
+  return true;
+ }catch(err){
+  console.error(err);
+  audioCtx=null;
+  toast('Could not start the cozy sounds.');
+  return false;
+}
+
+}
+
+async function wakeAudio(){
+ if(!audioSetup()) return false;
+ try{
+  if(audioCtx.state==='suspended') await audioCtx.resume();
+  return audioCtx.state==='running';
+ }catch(err){
+  console.error(err);
+  return false;
+ }
+}
+
+async function toggleSound(type){
+ const ready=await wakeAudio();
+ if(!ready){toast('Tap the sound button again to start 🌧️');return}
+ state.audio[type]=!state.audio[type];
+ persist();
+
+ const vol=Number($(type==='rain'?'rain-volume':'ambient-volume').value)/100;
+ if(type==='rain'){
+  rainGain.gain.setTargetAtTime(state.audio.rain?vol:0,audioCtx.currentTime,.12);
+ }else{
+  ambientGain.gain.setTargetAtTime(state.audio.ambient?vol*.08:0,audioCtx.currentTime,.12);
+ }
+ $(type+'-sound-btn').textContent=state.audio[type]?'ON':'OFF';
+ updateAudioIcon();
+}
+
+async function toggleGlobalAudio(){
+ const ready=await wakeAudio();
+ if(!ready){toast('Tap the sound button again to start 🌧️');return}
+
+ state.audio.master=!state.audio.master;
+ state.audio.rain=state.audio.master;
+ state.audio.ambient=state.audio.master;
+ persist();
+
+ ['rain','ambient'].forEach(type=>{
+  $(type+'-sound-btn').textContent=state.audio[type]?'ON':'OFF';
+ });
+
+ const rv=state.audio.master?Number($('rain-volume').value)/100:0;
+ const av=state.audio.master?Number($('ambient-volume').value)/100:0;
+ rainGain.gain.setTargetAtTime(rv,audioCtx.currentTime,.12);
+ ambientGain.gain.setTargetAtTime(av*.08,audioCtx.currentTime,.12);
+
+ updateAudioIcon();
+ toast(state.audio.master?'Cozy sounds on 🌧️':'Cozy sounds off');
+}
+
+function updateAudioIcon(){
+ const anyOn=state.audio.master||state.audio.rain||state.audio.ambient;
+ $('global-audio-icon').className=anyOn?'fa-solid fa-volume-high text-lg':'fa-solid fa-volume-xmark text-lg';
+}
+
+$('rain-volume').oninput=()=>{
+ if(audioCtx&&audioCtx.state==='running'&&state.audio.rain)
+  rainGain.gain.setTargetAtTime(Number($('rain-volume').value)/100,audioCtx.currentTime,.05);
+};
+
+$('ambient-volume').oninput=()=>{
+ if(audioCtx&&audioCtx.state==='running'&&state.audio.ambient)
+  ambientGain.gain.setTargetAtTime(Number($('ambient-volume').value)/100*.08,audioCtx.currentTime,.05);
+};
+
+function sparkles(n=6,x=innerWidth/2,y=innerHeight/2){
+ for(let i=0;i<n;i++){let s=document.createElement('span');s.className='magic-sparkle';s.style.left=(x+(Math.random()-.5)*80)+'px';s.style.top=(y+(Math.random()-.5)*80)+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),800)}
+}
+document.addEventListener('click',e=>{if(e.target.closest('button,input,textarea,select,.tarot-card'))return;sparkles(2,e.clientX,e.clientY)});
+document.addEventListener('pointermove',e=>{if(Math.random()<.035)sparkles(1,e.clientX,e.clientY)});
+updateAudioIcon();
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  onAuthStateChanged, signOut, updateProfile
+} from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+import {
+  getDatabase, ref, set, get, push, onValue, remove, update, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/13.0.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDBfc35ZCMpcSJpN5jLRYeIc5vnwUJV3yQ",
+  authDomain: "my-safe-space-99057.firebaseapp.com",
+  projectId: "my-safe-space-99057",
+  storageBucket: "my-safe-space-99057.firebasestorage.app",
+  messagingSenderId: "1056991716647",
+  appId: "1:1056991716647:web:818947bae76344b9843502",
+  measurementId: "G-FDJP5MERK7"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+let me = null, friends = {}, activeFriend = null, unsubscribeMessages = null, unsubscribeRequests = null;
+
+const esc = (s) => {
+  const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML;
+};
+const emailKey = (email) => btoa(unescape(encodeURIComponent(email.trim().toLowerCase())))
+  .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const chatIdFor = (a,b) => [a,b].sort().join('_');
+const setAuthStatus = (s) => { const x=$('auth-status'); if(x) x.textContent=s; };
+const badge = (s) => { const x=$('chat-connection-badge'); if(x) x.textContent=s; };
+
+function showChatApp(yes){
+  $('auth-card').classList.toggle('hidden', yes);
+  $('chat-app').classList.toggle('hidden', !yes);
+}
+
+async function saveMyUser(){
+  const u=auth.currentUser;
+  if(!u) return;
+  const old = state.profile || {};
+  const profile = {
+    email: u.email,
+    name: old.name || u.displayName || (u.email||'Valorie').split('@')[0],
+    bio: old.bio || 'A little witch making a soft place to exist.',
+    icon: old.icon || '🌙',
+    mood: old.mood || 'soft witch ♡'
+  };
+  state.profile = profile; persist();
+  await set(ref(db,'users/'+u.uid), {...profile, uid:u.uid});
+  await set(ref(db,'directory/'+emailKey(u.email)), {uid:u.uid,name:profile.name,icon:profile.icon});
+}
+
+async function createAccount(){
+  const email=$('auth-email').value.trim(), password=$('auth-password').value;
+  if(!email || password.length<6){setAuthStatus('Use a valid email and a password with at least 6 characters.');return;}
+  try{
+    setAuthStatus('Creating your account...');
+    const cred=await createUserWithEmailAndPassword(auth,email,password);
+    await saveMyUser();
+    badge('♡ connected');
+    setAuthStatus('Account created. Welcome home.');
+  }catch(e){setAuthStatus(e.message.replace('Firebase: ','').replace(/\(auth\/.*\)\.?/,'').trim());}
+}
+async function login(){
+  const email=$('auth-email').value.trim(), password=$('auth-password').value;
+  if(!email || !password){setAuthStatus('Enter your email and password first.');return;}
+  try{
+    setAuthStatus('Opening your sanctuary...');
+    await signInWithEmailAndPassword(auth,email,password);
+  }catch(e){setAuthStatus(e.message.replace('Firebase: ','').replace(/\(auth\/.*\)\.?/,'').trim());}
+}
+
+window.valorieSyncProfile = async ()=>{
+ const u=auth.currentUser; if(!u) return;
+ await set(ref(db,'users/'+u.uid), {...state.profile,email:u.email,uid:u.uid});
+ await set(ref(db,'directory/'+emailKey(u.email)), {uid:u.uid,name:state.profile.name,icon:state.profile.icon||'🌙'});
+};
+
+window.valorieSignUp=createAccount;
+window.valorieLogin=login;
+window.valorieLogout=()=>signOut(auth);
+
+async function loadFriends(){
+  friends={};
+  if(!me) return;
+  const snap=await get(ref(db,'friends/'+me.uid));
+  if(snap.exists()) friends=snap.val()||{};
+  renderFriendList();
+  updateProfileStatsReal();
+}
+
+function renderFriendList(){
+  const box=$('friend-list'); box.innerHTML='';
+  const ids=Object.keys(friends);
+  $('friend-count').textContent=ids.length+' friends';
+  if(!ids.length){
+    box.innerHTML='<div class="text-center text-[10px] text-pink-200/35 py-6">No friends yet.<br>Add someone by email ♡</div>';
+    return;
+  }
+  ids.forEach(id=>{
+    const f=friends[id];
+    const b=document.createElement('button');
+    b.className='chat-friend '+(id===activeFriend?'active ':'')+'w-full rounded-2xl p-3 flex items-center gap-3 text-left';
+    b.innerHTML='<div class="chat-avatar">'+esc(f.icon||'💗')+'</div><div class="min-w-0 flex-1"><div class="text-xs text-pinkgoth-light truncate">'+esc(f.name||f.email||'Friend')+'</div><div class="text-[9px] text-pink-200/40 truncate">'+esc(f.email||'friend')+'</div></div>';
+    b.onclick=()=>selectFriend(id);
+    box.appendChild(b);
+  });
+}
+
+async function addFriendByEmail(){
+  if(!me) return;
+  const email=$('friend-email-input').value.trim().toLowerCase();
+  if(!email) return toast('Enter your friend’s email ♡');
+  if(email===me.email.toLowerCase()) return toast('That is your own email, little witch ♡');
+  const dir=await get(ref(db,'directory/'+emailKey(email)));
+  if(!dir.exists()) return toast('No account found with that email yet.');
+  const target=dir.val();
+  if(friends[target.uid]) return toast('They are already in your coven ✨');
+  await set(ref(db,'friendRequests/'+target.uid+'/'+me.uid),{
+    fromUid:me.uid,fromEmail:me.email,fromName:(state.profile?.name||me.email.split('@')[0]),fromIcon:(state.profile?.icon||'🌙'),createdAt:serverTimestamp()
+  });
+  $('friend-email-input').value='';
+  toast('Friend request sent ♡');
+}
+
+async function loadRequests(){
+  if(!me) return;
+  const r=ref(db,'friendRequests/'+me.uid);
+  if(unsubscribeRequests) unsubscribeRequests();
+  unsubscribeRequests=onValue(r,snap=>{
+    const box=$('friend-requests'), wrap=$('friend-request-box');
+    box.innerHTML='';
+    if(!snap.exists()){wrap.classList.add('hidden');return;}
+    wrap.classList.remove('hidden');
+    Object.entries(snap.val()).forEach(([fromUid,req])=>{
+      const row=document.createElement('div');
+      row.className='rounded-xl border border-pinkgoth-border/60 p-2';
+      row.innerHTML='<div class="text-[10px] text-pinkgoth-light">'+esc(req.fromName||'Someone')+'</div><div class="text-[9px] text-pink-200/40">'+esc(req.fromEmail||'')+'</div><div class="flex gap-2 mt-2"><button class="accept goth-btn rounded-xl px-2 py-1 text-[9px] bg-pinkgoth-deep border border-pinkgoth-accent">Accept</button><button class="decline rounded-xl px-2 py-1 text-[9px] border border-pinkgoth-border">Decline</button></div>';
+      row.querySelector('.accept').onclick=()=>acceptRequest(fromUid,req);
+      row.querySelector('.decline').onclick=()=>remove(ref(db,'friendRequests/'+me.uid+'/'+fromUid));
+      box.appendChild(row);
+    });
+  });
+}
+
+async function acceptRequest(fromUid,req){
+  const targetSnap=await get(ref(db,'users/'+fromUid));
+  if(!targetSnap.exists()) return toast('That account could not be found.');
+  const target=targetSnap.val();
+  const myProfile=state.profile||{};
+  const myFriend={uid:me.uid,email:me.email,name:myProfile.name||me.email.split('@')[0],icon:myProfile.icon||'🌙'};
+  const theirFriend={uid:fromUid,email:target.email,name:target.name||req.fromName||'Friend',icon:target.icon||req.fromIcon||'💗'};
+  const chatId=chatIdFor(me.uid,fromUid);
+  await update(ref(db),{
+    ['friends/'+me.uid+'/'+fromUid]:theirFriend,
+    ['friends/'+fromUid+'/'+me.uid]:myFriend,
+    ['chatMeta/'+chatId]:{a:me.uid,b:fromUid},
+    ['friendRequests/'+me.uid+'/'+fromUid]:null
+  });
+  await loadFriends();
+  selectFriend(fromUid);
+  toast('A new friendship has bloomed ♡');
+}
+
+function renderMessages(data){
+  const box=$('chat-messages'); box.innerHTML='';
+  if(!data){
+    box.innerHTML='<div class="h-full flex items-center justify-center text-center text-xs text-pink-200/35 px-8">No whispers yet.<br>Send the first little message ✦</div>';return;
+  }
+  Object.values(data).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).forEach(m=>{
+    const mine=m.senderId===me.uid, row=document.createElement('div');
+    row.className='flex '+(mine?'justify-end':'justify-start');
+    const time=m.createdAt?new Date(m.createdAt).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):'now';
+    row.innerHTML='<div><div class="chat-bubble '+(mine?'me':'them')+'">'+esc(m.text)+'</div><div class="chat-time '+(mine?'text-right':'')+'">'+time+'</div></div>';
+    box.appendChild(row);
+  });
+  box.scrollTop=box.scrollHeight;
+}
+
+function selectFriend(uid){
+  activeFriend=uid;
+  renderFriendList();
+  const f=friends[uid];
+  if(!f) return;
+  $('chat-header-avatar').textContent=f.icon||'💗';
+  $('chat-header-name').textContent=f.name||'Friend';
+  $('chat-header-status').textContent=f.email||'Private conversation';
+  if(unsubscribeMessages) unsubscribeMessages();
+  const chatId=chatIdFor(me.uid,uid);
+  unsubscribeMessages=onValue(ref(db,'chats/'+chatId+'/messages'),snap=>renderMessages(snap.exists()?snap.val():null));
+}
+window.addFriendByEmail=addFriendByEmail;
+window.quickChat=(text)=>{ $('chat-input').value=text; window.sendChatMessage(); };
+
+window.sendChatMessage=async()=>{
+  if(!me || !activeFriend) return toast('Choose a friend first ♡');
+  const input=$('chat-input'), text=input.value.trim();
+  if(!text) return;
+  input.value='';
+  const chatId=chatIdFor(me.uid,activeFriend);
+  const newMsg=push(ref(db,'chats/'+chatId+'/messages'));
+  await set(newMsg,{senderId:me.uid,text,createdAt:serverTimestamp()});
+  sparkles(4);
+};
+
+$('chat-input').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();window.sendChatMessage();}
+});
+$('friend-email-input').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();addFriendByEmail();}
+});
+
+function updateProfileStatsReal(){
+  if($('profile-friends-count')) $('profile-friends-count').textContent=Object.keys(friends).length;
+}
+
+onAuthStateChanged(auth,async user=>{
+  me=user;
+  if(!user){
+    showChatApp(false); badge('♡ not signed in'); setAuthStatus('Create an account or log in to use real chat.'); return;
+  }
+  showChatApp(true); badge('♡ connected');
+  await saveMyUser();
+  await loadFriends();
+  await loadRequests();
+  if(Object.keys(friends).length && !activeFriend) selectFriend(Object.keys(friends)[0]);
+  else if(!Object.keys(friends).length){
+    $('chat-messages').innerHTML='<div class="h-full flex items-center justify-center text-center text-xs text-pink-200/35 px-8">Add your first friend by email to begin ♡</div>';
+  }
+});
+</script>
+
+</body>
+</html>
